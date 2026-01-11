@@ -1,0 +1,280 @@
+/* ===========================
+   Global Styles - Production Ready
+   Full browser compatibility for gradients and clipping
+=========================== */
+:root {
+  /* Dark theme (default) */
+  --bg-primary: #0f172a;
+  --bg-secondary: #020617;
+  --bg-card: #020617;
+  --text-primary: #e5e7eb;
+  --text-secondary: #94a3b8;
+  --accent: #38bdf8;
+  --accent-hover: #0ea5e9;
+  --border: #334155;
+}
+
+[data-theme="light"] {
+  /* Light theme */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --accent: #0ea5e9;
+  --accent-hover: #0284c7;
+  --border: #e2e8f0;
+}
+
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.7;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ===========================
+   Layout & Typography
+=========================== */
+header, footer { 
+  background: var(--bg-secondary); 
+  padding: 1.5rem 2rem; 
+  border-bottom: 1px solid var(--border);
+}
+
+nav {
+  max-width: 1100px; 
+  margin: auto; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+}
+
+/* Logo with gradient text - FULL BROWSER COMPATIBILITY */
+nav h2 { 
+  font-size: 1.5rem; 
+  font-weight: 700;
+  /* Standard property first */
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  /* Fallback for very old browsers */
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+nav a { 
+  color: var(--text-primary); 
+  text-decoration: none; 
+  margin-left: 2rem; 
+  font-weight: 500; 
+  transition: color 0.3s ease; 
+}
+nav a:hover { 
+  color: var(--accent-hover); 
+}
+
+#theme-toggle { 
+  background: none; 
+  border: 1px solid var(--border); 
+  color: var(--text-primary); 
+  padding: 0.5rem 1rem; 
+  border-radius: 6px; 
+  cursor: pointer; 
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+#theme-toggle:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+main { 
+  max-width: 1100px; 
+  margin: auto; 
+  padding: 3rem 2rem; 
+}
+
+section { margin-bottom: 4rem; }
+
+h1, h2, h3 { 
+  color: var(--accent); 
+  margin-bottom: 1rem; 
+  font-weight: 600; 
+}
+
+h1 { font-size: 2.5rem; margin-bottom: 1.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.25rem; }
+
+/* ===========================
+   Cards & Animations
+=========================== */
+.card {
+  background: var(--bg-card);
+  padding: 2.5rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  box-shadow: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border);
+  opacity: 0; 
+  transform: translateY(30px); 
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card.animate { 
+  opacity: 1; 
+  transform: translateY(0); 
+}
+
+/* ===========================
+   Skills Progress Bars
+=========================== */
+.skill-bars { margin-top: 1.5rem; }
+.skill-bar { 
+  background: var(--border); 
+  height: 10px; 
+  border-radius: 5px; 
+  margin-bottom: 1rem; 
+  overflow: hidden;
+  position: relative;
+}
+.skill-progress { 
+  background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+  height: 100%; 
+  transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 5px;
+}
+
+/* ===========================
+   Lists & Links
+=========================== */
+ul { list-style: none; padding-left: 0; }
+ul li { 
+  padding: 1rem 0; 
+  padding-left: 1.5rem;
+  position: relative;
+  border-left: 3px solid transparent; 
+  transition: all 0.3s ease; 
+}
+ul li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: bold;
+}
+ul li:hover { 
+  border-left-color: var(--accent-hover); 
+  padding-left: 2rem;
+}
+
+/* ===========================
+   Form Styles (Contact Page)
+=========================== */
+form input, form textarea, form button {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+form input:focus, form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+}
+form button {
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+  color: white;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3);
+}
+
+#projects-container .card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===========================
+   Footer
+=========================== */
+footer { 
+  text-align: center; 
+  padding: 3rem 2rem 2rem; 
+  font-size: 0.95rem; 
+  color: var(--text-secondary); 
+}
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+footer a:hover { text-decoration: underline; }
+
+/* ===========================
+   Responsive Design - Mobile First
+=========================== */
+@media (max-width: 768px) {
+  nav { 
+    flex-direction: column; 
+    gap: 1.5rem; 
+    text-align: center;
+  }
+  nav a { 
+    margin: 0 0.5rem; 
+  }
+  main { 
+    padding: 2rem 1rem; 
+  }
+  h1 { font-size: 2rem; }
+  .card { padding: 2rem 1.5rem; }
+}
+
+@media (max-width: 480px) {
+  .card { padding: 1.5rem; }
+  nav h2 { font-size: 1.3rem; }
+}
+
+/* ===========================
+   Utility Classes
+=========================== */
+.hero {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+}
+.hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Print Styles */
+@media print {
+  body { background: white; color: black; }
+  .card { box-shadow: none; border: 1px solid #ccc; }
+}
+
+
