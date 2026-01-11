@@ -1,6 +1,6 @@
 /* ===========================
-   Global Styles - Production Ready
-   Full browser compatibility for gradients and clipping
+   Global Styles - Production Ready v2.0
+   Complete portfolio with GitHub cards, experiences timeline, full theme support
 =========================== */
 :root {
   /* Dark theme (default) */
@@ -37,7 +37,7 @@ body {
   line-height: 1.7;
   background: var(--bg-primary);
   color: var(--text-primary);
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease, all 0.3s ease;
 }
 
 /* ===========================
@@ -57,16 +57,13 @@ nav {
   align-items: center;
 }
 
-/* Logo with gradient text - FULL BROWSER COMPATIBILITY */
 nav h2 { 
   font-size: 1.5rem; 
   font-weight: 700;
-  /* Standard property first */
   background: linear-gradient(135deg, var(--accent), var(--accent-hover));
   background-clip: text;
   -webkit-background-clip: text;
   -moz-background-clip: text;
-  /* Fallback for very old browsers */
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
@@ -96,6 +93,7 @@ nav a:hover {
   background: var(--accent);
   color: white;
   border-color: var(--accent);
+  transform: translateY(-1px);
 }
 
 main { 
@@ -106,18 +104,18 @@ main {
 
 section { margin-bottom: 4rem; }
 
-h1, h2, h3 { 
+h1, h2, h3, h4 { 
   color: var(--accent); 
   margin-bottom: 1rem; 
   font-weight: 600; 
 }
-
 h1 { font-size: 2.5rem; margin-bottom: 1.5rem; }
 h2 { font-size: 2rem; }
 h3 { font-size: 1.25rem; }
+h4 { font-size: 1.1rem; }
 
 /* ===========================
-   Cards & Animations
+   Cards & Animations (Core)
 =========================== */
 .card {
   background: var(--bg-card);
@@ -138,6 +136,224 @@ h3 { font-size: 1.25rem; }
 }
 
 /* ===========================
+   GitHub Repo Cards (Enhanced)
+=========================== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.repo-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  height: fit-content;
+}
+
+.repo-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3);
+}
+
+.repo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.repo-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.language-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.repo-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.repo-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.repo-btn.primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+  color: white;
+}
+
+.repo-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(56, 189, 248, 0.4);
+}
+
+.repo-btn.secondary {
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  background: transparent;
+}
+
+.repo-btn.secondary:hover {
+  background: var(--accent);
+  color: white;
+}
+
+/* ===========================
+   Experiences Timeline (experiences.js)
+=========================== */
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.experience-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.experience-card {
+  position: relative;
+  padding: 2rem 2rem 2rem 2.5rem;
+  border-left: 4px solid var(--border);
+  transition: all 0.4s ease;
+}
+
+.experience-card:hover {
+  border-left-color: var(--accent);
+  transform: translateX(8px);
+}
+
+.experience-card::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 2.5rem;
+  width: 16px;
+  height: 16px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: 4px solid var(--bg-secondary);
+  z-index: 2;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.experience-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+}
+
+.experience-meta {
+  text-align: right;
+  flex: 1;
+}
+
+.experience-company {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.experience-duration {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.experience-badge {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-work { 
+  background: rgba(34, 197, 94, 0.2); 
+  color: #22c55e; 
+  border: 1px solid #22c55e; 
+}
+
+.badge-internship { 
+  background: rgba(59, 130, 246, 0.2); 
+  color: #3b82f6; 
+  border: 1px solid #3b82f6; 
+}
+
+.badge-research { 
+  background: rgba(168, 85, 247, 0.2); 
+  color: #a855f7; 
+  border: 1px solid #a855f7; 
+}
+
+.badge-teaching { 
+  background: rgba(251, 191, 36, 0.2); 
+  color: #fbbf24; 
+  border: 1px solid #fbbf24; 
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.tech-tag {
+  background: var(--border);
+  color: var(--text-primary);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+  background: var(--accent);
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* ===========================
    Skills Progress Bars
 =========================== */
 .skill-bars { margin-top: 1.5rem; }
@@ -147,7 +363,6 @@ h3 { font-size: 1.25rem; }
   border-radius: 5px; 
   margin-bottom: 1rem; 
   overflow: hidden;
-  position: relative;
 }
 .skill-progress { 
   background: linear-gradient(90deg, var(--accent), var(--accent-hover));
@@ -157,7 +372,7 @@ h3 { font-size: 1.25rem; }
 }
 
 /* ===========================
-   Lists & Links
+   Lists & Enhanced Lists
 =========================== */
 ul { list-style: none; padding-left: 0; }
 ul li { 
@@ -180,42 +395,88 @@ ul li:hover {
 }
 
 /* ===========================
-   Form Styles (Contact Page)
+   Form Styles (Contact Page) - Enhanced
 =========================== */
-form input, form textarea, form button {
+.form-group {
+  margin-bottom: 2rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+form input, form textarea, form select {
   width: 100%;
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-  border: 1px solid var(--border);
-  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  border: 2px solid var(--border);
+  border-radius: 12px;
   background: var(--bg-secondary);
   color: var(--text-primary);
   font-family: inherit;
   font-size: 1rem;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 form input:focus, form textarea:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.15);
+  transform: translateY(-1px);
 }
+
+form input::placeholder, form textarea::placeholder {
+  color: var(--text-secondary);
+}
+
 form button {
+  width: 100%;
+  padding: 1.25rem 2rem;
   background: linear-gradient(135deg, var(--accent), var(--accent-hover));
   color: white;
   border: none;
+  border-radius: 12px;
   font-weight: 600;
+  font-size: 1.1rem;
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-}
-form button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
 
-#projects-container .card {
-  display: flex;
-  flex-direction: column;
+form button:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 25px -5px rgba(56, 189, 248, 0.3);
+}
+
+form button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+#formFeedback {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  font-weight: 500;
+  display: none;
+}
+
+#formFeedback.error {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid #ef4444;
+}
+
+#formFeedback.success {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border: 1px solid #10b981;
 }
 
 /* ===========================
@@ -234,6 +495,20 @@ footer a {
 footer a:hover { text-decoration: underline; }
 
 /* ===========================
+   Hero Section
+=========================== */
+.hero {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+}
+.hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ===========================
    Responsive Design - Mobile First
 =========================== */
 @media (max-width: 768px) {
@@ -249,32 +524,46 @@ footer a:hover { text-decoration: underline; }
     padding: 2rem 1rem; 
   }
   h1 { font-size: 2rem; }
-  .card { padding: 2rem 1.5rem; }
+  .card { 
+    padding: 2rem 1.5rem; 
+  }
+  .projects-grid { 
+    grid-template-columns: 1fr; 
+    gap: 1.5rem;
+  }
+  .experience-grid { 
+    grid-template-columns: 1fr; 
+    gap: 2rem; 
+  }
+  .experience-card { 
+    padding: 1.75rem; 
+  }
+  .experience-header { 
+    flex-direction: column; 
+    text-align: left; 
+  }
+  .experience-meta { 
+    text-align: left; 
+  }
 }
 
 @media (max-width: 480px) {
   .card { padding: 1.5rem; }
   nav h2 { font-size: 1.3rem; }
+  .projects-grid { gap: 1.25rem; }
 }
 
 /* ===========================
-   Utility Classes
+   Animations & Utilities
 =========================== */
-.hero {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto 4rem;
-}
-.hero p {
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin: 0 auto;
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* Print Styles */
 @media print {
   body { background: white; color: black; }
   .card { box-shadow: none; border: 1px solid #ccc; }
+  [data-theme="dark"] { --bg-primary: white; --bg-card: white; }
 }
-
-
